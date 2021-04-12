@@ -28,7 +28,7 @@ public class Comment implements Serializable {
 	}
 	public Comment(Long comment_Id, Date comment_Date, String comment_text) {
 		super();
-		Comment_Id = comment_Id;
+		Comment_Id = (long) Comment_Id;
 		Comment_Date = comment_Date;
 		Comment_text = comment_text;
 	}

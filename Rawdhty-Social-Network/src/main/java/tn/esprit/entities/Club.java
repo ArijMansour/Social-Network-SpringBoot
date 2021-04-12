@@ -31,9 +31,9 @@ public class Club implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Club(Long club_Id, String club_Description, Club_Type club_type) {
+	public Club(int Club_ID, String club_Description, Club_Type club_type) {
 		super();
-		Club_Id = club_Id;
+		Club_Id = (long) Club_ID;
 		Club_Description = club_Description;
 		this.club_type = club_type;
 	}
