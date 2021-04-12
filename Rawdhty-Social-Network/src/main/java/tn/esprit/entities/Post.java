@@ -19,7 +19,7 @@ public class Post implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="Posts_ID")
-	private Long Post_Id ; 
+	private long Post_Id ; 
 	private Date Post_Date ;
 	private String Post_Description ; 
 	private String post_Title ;
@@ -27,18 +27,12 @@ public class Post implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Post(Long post_Id, Date post_Date, String post_Description, String post_Title) {
+	public Post(long post_Id, Date post_Date, String post_Description, String post_Title) {
 		super();
 		Post_Id = post_Id;
 		Post_Date = post_Date;
 		Post_Description = post_Description;
 		this.post_Title = post_Title;
-	}
-	public Long getPost_Id() {
-		return Post_Id;
-	}
-	public void setPost_Id(Long post_Id) {
-		Post_Id = post_Id;
 	}
 	public Date getPost_Date() {
 		return Post_Date;
@@ -67,7 +61,7 @@ public class Post implements Serializable {
 		int result = 1;
 		result = prime * result + ((Post_Date == null) ? 0 : Post_Date.hashCode());
 		result = prime * result + ((Post_Description == null) ? 0 : Post_Description.hashCode());
-		result = prime * result + ((Post_Id == null) ? 0 : Post_Id.hashCode());
+		result = prime * result + (int) (Post_Id ^ (Post_Id >>> 32));
 		result = prime * result + ((post_Title == null) ? 0 : post_Title.hashCode());
 		return result;
 	}
@@ -90,10 +84,7 @@ public class Post implements Serializable {
 				return false;
 		} else if (!Post_Description.equals(other.Post_Description))
 			return false;
-		if (Post_Id == null) {
-			if (other.Post_Id != null)
-				return false;
-		} else if (!Post_Id.equals(other.Post_Id))
+		if (Post_Id != other.Post_Id)
 			return false;
 		if (post_Title == null) {
 			if (other.post_Title != null)
@@ -107,5 +98,19 @@ public class Post implements Serializable {
 		return "Post [Post_Id=" + Post_Id + ", Post_Date=" + Post_Date + ", Post_Description=" + Post_Description
 				+ ", post_Title=" + post_Title + "]";
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
