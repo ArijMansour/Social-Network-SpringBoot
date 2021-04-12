@@ -14,5 +14,13 @@ public interface PostService {
 	void deletePost(String id);
 	Post updatePost(Post post);
 	Post retrievePost(String id);
+	void affectPostToUser(String id, String postId);
+	public int CountPosts();
+	public int CountPostsByUser(long id);
+	public List<Post> getPostsByUserId(long id);
+	public List<Post> getPostsLikedByUser( long id);
+	public Post mostLikedPost() throws Exception;
+
+
 
 }

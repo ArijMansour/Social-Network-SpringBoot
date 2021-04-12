@@ -1,13 +1,16 @@
 package tn.esprit.services;
 
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
+
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 import org.springframework.stereotype.Component;
 
+/*
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+*/
 
 @Component
 @Endpoint(id = "piDEV1", enableByDefault = true)
@@ -20,10 +23,14 @@ public class EndPointApi {
 
 }
 
+/*
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+*/
+
+
 class EndPointResponse {
 	
 	private int id;

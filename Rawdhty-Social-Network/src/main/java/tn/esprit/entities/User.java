@@ -2,6 +2,7 @@ package tn.esprit.entities;
 
 
 import java.io.Serializable;
+
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -11,8 +12,14 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
+
 
 @Entity
 @Table(name = "T_Users")
@@ -36,16 +43,111 @@ public class User implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
+	
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "FORUM_PROJ",joinColumns = @JoinColumn(name="FORUM_ID"),
+	inverseJoinColumns=@JoinColumn(name="USER_ID"))
+	private Set<Forum> l_Forum;
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private Set<Claim> claims;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private Set<Meeting> meetings;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private Set<Post> posts;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private Set<Event> events;
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	public Set<Forum> getL_Forum() {
+		return l_Forum;
+	}
+
+	public void setL_Forum(Set<Forum> l_Forum) {
+		this.l_Forum = l_Forum;
+	}
+
+
+
+
+
+
+
+
+
+
+	public User(String email, String password, String first_name, String last_name, String adresse, String telephone,
+			String cin, String date, int status, Role role, Set<Forum> l_Forum, Set<Post> posts, Set<Event> events) {
+		super();
+		Email = email;
+		Password = password;
+		First_name = first_name;
+		Last_name = last_name;
+		Adresse = adresse;
+		Telephone = telephone;
+		Cin = cin;
+		Date = date;
+		Status = status;
+		this.role = role;
+		this.l_Forum = l_Forum;
+		this.posts = posts;
+		this.events = events;
+	}
+
+
+
+
+
+
+
+
+
+
+	public User(Long id, String email, String password, String first_name, String last_name, String adresse,
+			String telephone, String cin, String date, int status, Role role, Set<Forum> l_Forum, Set<Post> posts,
+			Set<Event> events) {
+		super();
+		Id = id;
+		Email = email;
+		Password = password;
+		First_name = first_name;
+		Last_name = last_name;
+		Adresse = adresse;
+		Telephone = telephone;
+		Cin = cin;
+		Date = date;
+		Status = status;
+		this.role = role;
+		this.l_Forum = l_Forum;
+		this.posts = posts;
+		this.events = events;
+	}
+
+
+
+
+
+
+
+
+
 
 	public User(Long id, String email, String password, String first_name, String last_name, String adresse,
 			String telephone, String cin, String date, int status, Role role) {
@@ -63,8 +165,36 @@ public class User implements Serializable {
 		this.role = role;
 	}
 
+	
+
+	public Set<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(Set<Post> posts) {
+		this.posts = posts;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	public Set<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(Set<Event> events) {
+		this.events = events;
+	}
+
 	public User(String email, String password, String first_name, String last_name, String adresse, String telephone,
-			String cin, String date, int status, Role role) {
+			String cin, String date, int status, Role role, Set<Post> posts, Set<Event> events) {
 		super();
 		Email = email;
 		Password = password;
@@ -76,6 +206,61 @@ public class User implements Serializable {
 		Date = date;
 		Status = status;
 		this.role = role;
+		this.posts = posts;
+		this.events = events;
+	}
+
+	public User(Long id, String email, String password, String first_name, String last_name, String adresse,
+			String telephone, String cin, String date, int status, Role role, Set<Post> posts, Set<Event> events) {
+		super();
+		Id = id;
+		Email = email;
+		Password = password;
+		First_name = first_name;
+		Last_name = last_name;
+		Adresse = adresse;
+		Telephone = telephone;
+		Cin = cin;
+		Date = date;
+		Status = status;
+		this.role = role;
+		this.posts = posts;
+		this.events = events;
+	}
+
+	public User(String email, String password, String first_name, String last_name, String adresse, String telephone,
+			String cin, String date, int status, Set<Post> posts) {
+		super();
+		Email = email;
+		Password = password;
+		First_name = first_name;
+		Last_name = last_name;
+		Adresse = adresse;
+		Telephone = telephone;
+		Cin = cin;
+		Date = date;
+		Status = status;
+		this.posts = posts;
+	}
+
+	
+	
+	
+	
+	public User(Long id, String email, String password, String first_name, String last_name, String adresse,
+			String telephone, String cin, String date, int status, Set<Post> posts) {
+		super();
+		Id = id;
+		Email = email;
+		Password = password;
+		First_name = first_name;
+		Last_name = last_name;
+		Adresse = adresse;
+		Telephone = telephone;
+		Cin = cin;
+		Date = date;
+		Status = status;
+		this.posts = posts;
 	}
 
 	public User(String email, String password, String first_name, String last_name, String adresse, String telephone,
@@ -195,5 +380,5 @@ public class User implements Serializable {
 	
 }
 
-}
+
 

@@ -42,7 +42,7 @@ public class EventServiceImplTest {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = dateFormat.parse("2021-04-11");
 		Date date1 = dateFormat.parse("2021-05-20");
-		Event event = new Event(date, date1, "event_Description", Event_Place.KINDERGARDEN, Event_Type.COMETITION);
+		Event event = new Event(date, date1, "event_Description1", Event_Place.KINDERGARDEN, Event_Type.COMETITION);
 		assertTrue(event.getEvent_place().equals(Event_Place.KINDERGARDEN));
 		assertTrue(event.getEvent_type().equals(Event_Type.COMETITION));
 		serviceEvent.addEvent(event);

@@ -1,14 +1,25 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
+
+import java.util.Date;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 
 @Entity 
 @Table(name="T_Posts")
@@ -23,6 +34,23 @@ public class Post implements Serializable {
 	private Date Post_Date ;
 	private String Post_Description ; 
 	private String post_Title ;
+	
+	
+	
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	private User user;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+	private Set<Likes> likes;
+	
+	
+	
+	
+	
+	
+	
+	
 	public Post() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -33,6 +61,80 @@ public class Post implements Serializable {
 		Post_Date = post_Date;
 		Post_Description = post_Description;
 		this.post_Title = post_Title;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public Set<Likes> getLikes() {
+		return likes;
+	}
+	public void setLikes(Set<Likes> likes) {
+		this.likes = likes;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public Post(long post_Id, Date post_Date, String post_Description, String post_Title, User user,
+			Set<Likes> likes) {
+		super();
+		Post_Id = post_Id;
+		Post_Date = post_Date;
+		Post_Description = post_Description;
+		this.post_Title = post_Title;
+		this.user = user;
+		this.likes = likes;
+	}
+	public Post(Date post_Date, String post_Description, String post_Title, User user,
+			Set<Likes> likes) {
+		super();
+		Post_Date = post_Date;
+		Post_Description = post_Description;
+		this.post_Title = post_Title;
+		this.user = user;
+		this.likes = likes;
+	}
+	public long getPost_Id() {
+		return Post_Id;
+	}
+	public void setPost_Id(long post_Id) {
+		Post_Id = post_Id;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public Post(Date post_Date, String post_Description, String post_Title, User user) {
+		super();
+		Post_Date = post_Date;
+		Post_Description = post_Description;
+		this.post_Title = post_Title;
+		this.user = user;
+	}
+	public Post(long post_Id, Date post_Date, String post_Description, String post_Title, User user) {
+		super();
+		Post_Id = post_Id;
+		Post_Date = post_Date;
+		Post_Description = post_Description;
+		this.post_Title = post_Title;
+		this.user = user;
 	}
 	public Date getPost_Date() {
 		return Post_Date;

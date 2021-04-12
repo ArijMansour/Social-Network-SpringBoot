@@ -1,14 +1,22 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+
+
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity 
 @Table(name="T_Forums")
@@ -22,6 +30,33 @@ public class Forum implements Serializable {
 	private long Forum_Id; 
 	private String Forum_Subject ; 
 	private Date Forum_Date_Creation ;
+	
+	
+	
+	
+	@JsonIgnore
+	@ManyToMany(mappedBy="l_Forum", fetch=FetchType.EAGER )
+	private Set <User> l_User;
+	
+	
+	
+	
+	
+	
+	
+	public Forum(long forum_Id, String forum_Subject, Date forum_Date_Creation, Set<User> l_User) {
+		super();
+		Forum_Id = forum_Id;
+		Forum_Subject = forum_Subject;
+		Forum_Date_Creation = forum_Date_Creation;
+		this.l_User = l_User;
+	}
+	public Forum(String forum_Subject, Date forum_Date_Creation, Set<User> l_User) {
+		super();
+		Forum_Subject = forum_Subject;
+		Forum_Date_Creation = forum_Date_Creation;
+		this.l_User = l_User;
+	}
 	public Forum() {
 		super();
 		// TODO Auto-generated constructor stub

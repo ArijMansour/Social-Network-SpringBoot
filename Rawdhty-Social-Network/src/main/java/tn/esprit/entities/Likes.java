@@ -1,13 +1,22 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+
+
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 
 
 @Entity
@@ -22,6 +31,73 @@ public class Likes implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long likesId ;
 	private Date dateLike ;
+	
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name= "id_post")
+	private Post post;
+	
+	
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name= "id_user")
+	private User user;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public User getUser() {
+		return user;
+	}
+
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+
+	public Likes(Date dateLike, Post post, User user) {
+		super();
+		this.dateLike = dateLike;
+		this.post = post;
+		this.user = user;
+	}
+
+
+
+	public Likes(long likesId, Date dateLike, Post post, User user) {
+		super();
+		this.likesId = likesId;
+		this.dateLike = dateLike;
+		this.post = post;
+		this.user = user;
+	}
+
+
+
 	public Likes() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -33,6 +109,35 @@ public class Likes implements Serializable {
 		super();
 		this.likesId = likesId;
 		this.dateLike = dateLike;
+	}
+
+
+
+	public Likes(long likesId, Date dateLike, Post post) {
+		super();
+		this.likesId = likesId;
+		this.dateLike = dateLike;
+		this.post = post;
+	}
+
+
+
+	public Post getPost() {
+		return post;
+	}
+
+
+
+	public void setPost(Post post) {
+		this.post = post;
+	}
+
+
+
+	public Likes(Date dateLike, Post post) {
+		super();
+		this.dateLike = dateLike;
+		this.post = post;
 	}
 
 

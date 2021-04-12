@@ -36,7 +36,7 @@ public class ForumServiceImplTest {
 	public void testAddForum() throws ParseException{
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = dateFormat.parse("2021-03-11");
-		Forum forum = new Forum("forum_Subject", date);
+		Forum forum = new Forum("forum_Subject1", date);
 		serviceForum.addForum(forum);
 	}
 	

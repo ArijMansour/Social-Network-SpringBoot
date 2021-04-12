@@ -81,12 +81,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version><!--$NO-MVN-MAN-VER$-->
-			<scope>test</scope>
-		</dependency>
+		
 		
 		<dependency>
     <groupId>org.springframework.boot</groupId>
@@ -111,7 +106,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version><!--$NO-MVN-MAN-VER$-->
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

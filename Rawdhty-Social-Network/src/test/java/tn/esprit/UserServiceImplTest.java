@@ -34,7 +34,7 @@ public class UserServiceImplTest {
 
 	@Test
 	public void testAddUser() throws java.text.ParseException {
-		User u = new User("email3", "password3", "firstname3", "lastname3", "adress3", "telephone3", "cin3", "date",
+		User u = new User("tarek@gmail.com", "password3", "firstname3", "lastname3", "adress3", "telephone3", "cin3", "date",
 				Role.PARENT);
 		us.addUser(u);
 

@@ -2,6 +2,8 @@ package tn.esprit;
 
 import java.text.ParseException;
 
+
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -14,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import tn.esprit.entities.Post;
+import tn.esprit.services.LikesService;
 import tn.esprit.services.PostService;
 
 
@@ -26,6 +29,9 @@ public class PostServiceImplTest {
 	@Autowired
 	PostService servicePosts;
 	
+	@Autowired
+	LikesService serviceLikes ;
+	
 	
 	@SuppressWarnings("unused")
 	private static final Logger l = LogManager.getLogger(PostServiceImplTest.class);
@@ -34,7 +40,7 @@ public class PostServiceImplTest {
 	public void testAddPost() throws ParseException{
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = dateFormat.parse("2021-02-28");
-		Post post = new Post(3, date, "wihjfciwha2", "energie");
+		Post post = new Post(1, date, "wihjfciwha2", "energie1");
 		servicePosts.addPost(post);
 	}
 	
@@ -60,6 +66,7 @@ public class PostServiceImplTest {
 		Post post = new Post(1, date, "very amusing day ", "Be Happy");
 		servicePosts.updatePost(post);
 	}
+	
 	
 	
 	

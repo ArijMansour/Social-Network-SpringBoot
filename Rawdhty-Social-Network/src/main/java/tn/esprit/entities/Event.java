@@ -1,16 +1,23 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+
+
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity 
 @Table(name="T_Events")
@@ -31,6 +38,11 @@ public class Event implements Serializable {
 	
 	@Enumerated(EnumType.STRING ) 
 	private Event_Type  event_type ;
+	
+	
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	private User user;
 
 	public Event() {
 		super();
@@ -45,6 +57,29 @@ public class Event implements Serializable {
 		Event_Description = event_Description;
 		this.event_place = event_place;
 		this.event_type = event_type;
+	}
+	
+	
+	
+	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Event(Date event_Date_Begin, Date event_Date_Finish, String event_Description, Event_Place event_place,
+			Event_Type event_type, User user) {
+		super();
+		Event_Date_Begin = event_Date_Begin;
+		Event_Date_Finish = event_Date_Finish;
+		Event_Description = event_Description;
+		this.event_place = event_place;
+		this.event_type = event_type;
+		this.user = user;
 	}
 
 	public long getEvent_Id() {
