@@ -2,19 +2,22 @@ package tn.esprit.entities;
 
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "T_Users")
 public class User implements Serializable {
-	//ok
+	// ok
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -32,6 +35,12 @@ public class User implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	private Role role;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private Set<Claim> claims;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private Set<Meeting> meetings;
 
 	public User() {
 		super();
@@ -51,6 +60,35 @@ public class User implements Serializable {
 		Cin = cin;
 		Date = date;
 		Status = status;
+		this.role = role;
+	}
+
+	public User(String email, String password, String first_name, String last_name, String adresse, String telephone,
+			String cin, String date, int status, Role role) {
+		super();
+		Email = email;
+		Password = password;
+		First_name = first_name;
+		Last_name = last_name;
+		Adresse = adresse;
+		Telephone = telephone;
+		Cin = cin;
+		Date = date;
+		Status = status;
+		this.role = role;
+	}
+
+	public User(String email, String password, String first_name, String last_name, String adresse, String telephone,
+			String cin, String date, Role role) {
+		super();
+		Email = email;
+		Password = password;
+		First_name = first_name;
+		Last_name = last_name;
+		Adresse = adresse;
+		Telephone = telephone;
+		Cin = cin;
+		Date = date;
 		this.role = role;
 	}
 
@@ -153,5 +191,9 @@ public class User implements Serializable {
 				+ ", Date=" + Date + ", Status=" + Status + ", role=" + role + "]";
 	}
 
+
 	
 }
+
+}
+
