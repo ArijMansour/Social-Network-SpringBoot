@@ -1,5 +1,6 @@
 package tn.esprit.entities;
 
+
 import java.io.Serializable;
 import java.util.Set;
 
@@ -190,4 +191,9 @@ public class User implements Serializable {
 				+ ", Date=" + Date + ", Status=" + Status + ", role=" + role + "]";
 	}
 
+
+	
 }
+
+}
+
