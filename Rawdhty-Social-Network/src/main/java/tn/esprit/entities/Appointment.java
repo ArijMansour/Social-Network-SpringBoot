@@ -21,7 +21,7 @@ public class Appointment implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="Appointment_ID")
-	private Long Appoinment_Id ; 
+	private long Appoinment_Id ; 
 	private Date  Appoinment_Date ; 
 	private String  Appoinment_Subject ;
 	
@@ -33,19 +33,18 @@ public class Appointment implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Appointment(Long appoinment_Id, Date appoinment_Date, String appoinment_Subject,
-			Appointment_Place appoitnment_place, Appoitnment_Type appoitnment_type) {
+	public Appointment(Date appoinment_Date, String appoinment_Subject, Appointment_Place appoitnment_place,
+			Appoitnment_Type appoitnment_type) {
 		super();
-		Appoinment_Id = appoinment_Id;
 		Appoinment_Date = appoinment_Date;
 		Appoinment_Subject = appoinment_Subject;
 		this.appoitnment_place = appoitnment_place;
 		this.appoitnment_type = appoitnment_type;
 	}
-	public Long getAppoinment_Id() {
+	public long getAppoinment_Id() {
 		return Appoinment_Id;
 	}
-	public void setAppoinment_Id(Long appoinment_Id) {
+	public void setAppoinment_Id(long appoinment_Id) {
 		Appoinment_Id = appoinment_Id;
 	}
 	public Date getAppoinment_Date() {
@@ -72,12 +71,15 @@ public class Appointment implements Serializable {
 	public void setAppoitnment_type(Appoitnment_Type appoitnment_type) {
 		this.appoitnment_type = appoitnment_type;
 	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((Appoinment_Date == null) ? 0 : Appoinment_Date.hashCode());
-		result = prime * result + ((Appoinment_Id == null) ? 0 : Appoinment_Id.hashCode());
+		result = prime * result + (int) (Appoinment_Id ^ (Appoinment_Id >>> 32));
 		result = prime * result + ((Appoinment_Subject == null) ? 0 : Appoinment_Subject.hashCode());
 		result = prime * result + ((appoitnment_place == null) ? 0 : appoitnment_place.hashCode());
 		result = prime * result + ((appoitnment_type == null) ? 0 : appoitnment_type.hashCode());
@@ -97,10 +99,7 @@ public class Appointment implements Serializable {
 				return false;
 		} else if (!Appoinment_Date.equals(other.Appoinment_Date))
 			return false;
-		if (Appoinment_Id == null) {
-			if (other.Appoinment_Id != null)
-				return false;
-		} else if (!Appoinment_Id.equals(other.Appoinment_Id))
+		if (Appoinment_Id != other.Appoinment_Id)
 			return false;
 		if (Appoinment_Subject == null) {
 			if (other.Appoinment_Subject != null)
@@ -119,6 +118,12 @@ public class Appointment implements Serializable {
 				+ ", Appoinment_Subject=" + Appoinment_Subject + ", appoitnment_place=" + appoitnment_place
 				+ ", appoitnment_type=" + appoitnment_type + "]";
 	}
+	
+	
+	
+	
+	
+	
 	
 	
 
