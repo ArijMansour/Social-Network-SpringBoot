@@ -15,7 +15,9 @@ public interface ActivityRepository extends CrudRepository<Activity,Long> {
 	int getnbActivity () ;
 	@Query("Select a  from Activity a Where a.Activity_Status = :Activity_Status ")
 	List<Activity> getActivityByStatus(@Param("Activity_Status") int i) ; 
-	//@Query("SELECT a FROM Activity a WHERE a.Activity_Description LIKE %?1% OR a.user.login LIKE %?1% ")
-	//public List<Activity> findActivitiesByTextContaining(String text);
+	@Query("SELECT a FROM Activity a WHERE a.Activity_Description LIKE %?1% OR a.user.id LIKE %?1% ")
+	public List<Activity> findActivitiesByTextContaining(String text);
+	
+	
 	
 }

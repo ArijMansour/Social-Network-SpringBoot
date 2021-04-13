@@ -37,6 +37,8 @@ public interface UserService {
 
 	List<Meeting> getAllMeetingsByUser(int uId);
 
+	
+
 	// ============================//
 
 }

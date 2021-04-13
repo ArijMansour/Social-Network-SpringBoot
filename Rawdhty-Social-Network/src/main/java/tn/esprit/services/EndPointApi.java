@@ -15,7 +15,7 @@ public class EndPointApi {
 
 	@ReadOperation
 	public EndPointResponse features() {
-		return new EndPointResponse(263872, "PiDev-Social-Network", "Active ");
+		return new EndPointResponse(263872, "Rawdhty-Social-Network", "Active ");
 	}
 
 }
