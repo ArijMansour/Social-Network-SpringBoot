@@ -121,6 +121,58 @@ public class Claim implements Serializable {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Claims_Date == null) ? 0 : Claims_Date.hashCode());
+		result = prime * result + ((Claims_Description == null) ? 0 : Claims_Description.hashCode());
+		result = prime * result + ((Claims_Id == null) ? 0 : Claims_Id.hashCode());
+		result = prime * result + ((Claims_image == null) ? 0 : Claims_image.hashCode());
+		result = prime * result + ((cl_Type == null) ? 0 : cl_Type.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Claim other = (Claim) obj;
+		if (Claims_Date == null) {
+			if (other.Claims_Date != null)
+				return false;
+		} else if (!Claims_Date.equals(other.Claims_Date))
+			return false;
+		if (Claims_Description == null) {
+			if (other.Claims_Description != null)
+				return false;
+		} else if (!Claims_Description.equals(other.Claims_Description))
+			return false;
+		if (Claims_Id == null) {
+			if (other.Claims_Id != null)
+				return false;
+		} else if (!Claims_Id.equals(other.Claims_Id))
+			return false;
+		if (Claims_image == null) {
+			if (other.Claims_image != null)
+				return false;
+		} else if (!Claims_image.equals(other.Claims_image))
+			return false;
+		if (cl_Type != other.cl_Type)
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return "Claim [Claims_Id=" + Claims_Id + ", Claims_Description=" + Claims_Description + ", Claims_Date="
 				+ Claims_Date + ", Claims_image=" + Claims_image + ", cl_Type=" + cl_Type + "]";
