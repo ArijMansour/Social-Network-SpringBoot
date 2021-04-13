@@ -10,6 +10,6 @@ public class ApiActuatorController {
 
 	@GetMapping("/test")
 	public String testEndPoint() {
-		return "PiDev-Social Network  actuator example";
+		return "Rawdhty-Social Network  actuator example";
 	}
 }

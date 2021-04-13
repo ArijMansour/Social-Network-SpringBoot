@@ -14,5 +14,6 @@ public interface ActivityService {
     Long getnbActivity() ; 
     List<Activity> getActivityByStatus(String i) ; 
     public List<Activity> searchActivities(String text);
+	String GetUserbyActivityId(long id);
    
 }

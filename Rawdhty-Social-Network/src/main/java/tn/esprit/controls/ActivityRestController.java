@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.entities.Activity;
+import tn.esprit.repositories.ActivityRepository;
 import tn.esprit.services.ActivityService;
 //import tn.esprit.spring.service.UserServiceImpl;
 
@@ -23,6 +24,7 @@ public class ActivityRestController {
 	
 	@Autowired
 	ActivityService activityService;
+	
 	
 	// http://localhost:8081/SpringMVC/servlet/retrieve-all-activities
 	@GetMapping("/retrieve-all-activities")
@@ -84,8 +86,7 @@ public class ActivityRestController {
 					return activityService. searchActivities(pattern) ;
 					
 				}
-				
-				
+			
 			
 
 }

@@ -57,19 +57,21 @@ public class ActivityServiceImpl implements ActivityService {
 		
 	}
 
+	
+	
 	@Override
 	public List<Activity> searchActivities(String text) {
+       return activityRepository.findActivitiesByTextContaining(text);
+
+	}
+
+	@Override
+	public String GetUserbyActivityId(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
-	//@Override
-	//public List<Activity> searchActivities(String text) {
-       // return activityRepository.findActivitiesByTextContaining(text);
-
-	}
-	
 	
 	
 
-//}
+}

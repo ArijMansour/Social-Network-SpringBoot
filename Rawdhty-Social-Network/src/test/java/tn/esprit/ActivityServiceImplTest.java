@@ -34,15 +34,15 @@ public class ActivityServiceImplTest {
 		cls.retrieveAllActivities();
 	}
 	
-	@Test
+	/*@Test
 	public void testAddActivity() throws java.text.ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date dateBegin = dateFormat.parse("2021-04-01");
 		Date dateEnd = dateFormat.parse("2021-04-02");
 		Activity cl = new Activity(Long.parseLong("1"),"testActivityName","testActivityType","testActivityDescription","testActivityImg",dateBegin,dateEnd);
-		cls.addActivity(cl);
+		cls.addActivity(cl);*/
 		
-	}
+	//}
 	
 	@Test
 	public void testdeleteActivity() {
