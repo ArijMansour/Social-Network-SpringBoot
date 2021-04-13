@@ -56,6 +56,7 @@ public class ChatServiceImpl implements ChatService {
 		return "Hi, how Can we help you?";
 	}
 	
+	// Arij Mansour 
 	public String translate(String Content) {
 		AmazonTranslate translate = AmazonTranslateClientBuilder.defaultClient();
 		TranslateTextRequest request = new TranslateTextRequest().withText(Content).withSourceLanguageCode("fr")
@@ -65,6 +66,7 @@ public class ChatServiceImpl implements ChatService {
 		return (result.getTranslatedText());
 	}
 
+	// Translation Test 
 	public String translate2(String Content) {
 		AmazonTranslate translate = AmazonTranslateClientBuilder.defaultClient();
 		TranslateTextRequest request = new TranslateTextRequest().withText(Content).withSourceLanguageCode("en")

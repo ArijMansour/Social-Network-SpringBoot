@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import tn.esprit.entities.Chat;
 import tn.esprit.entities.User;
 import tn.esprit.entities.Chat.MessageType;
@@ -41,9 +43,10 @@ public class Chat implements Serializable {
 	//@JsonIgnore
 	
 	
-	@ManyToOne
-	@JoinColumn(name = "id_user")
-	private User user;
+	  @JsonIgnore
+		@ManyToOne
+		@JoinColumn(name= "iduser")
+		private User user;
 
 	public long getChat_Id() {
 		return Chat_Id;

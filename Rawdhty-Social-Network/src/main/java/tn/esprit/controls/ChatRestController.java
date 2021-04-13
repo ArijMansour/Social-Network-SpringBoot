@@ -66,12 +66,12 @@ public class ChatRestController {
 		return chatService.connectToChat();
 	}
 	
-	// localhost:8088/SpringMVC/servlet/chat/translateFr
+	// localhost:8088/SpringMVC/servlet/translateFr
 		@GetMapping("/translateFr")
 		public String translate(@RequestBody String Content) {
 			return chatService.translate(Content.intern());
 		}
-		// localhost:8088/SpringMVC/servlet/chat/translateEn
+		// localhost:8088/SpringMVC/servlet/translateEn
 				@GetMapping("/translateEn")
 				public String translate2(@RequestBody String Content) {
 					return chatService.translate(Content.intern());

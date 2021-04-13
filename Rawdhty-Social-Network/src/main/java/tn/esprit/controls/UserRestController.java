@@ -187,7 +187,7 @@ public class UserRestController {
 	}
 	
 	
-	
+	//Arij Mansour //
 	// http://localhost:8083/SpringMVC/servlet/GetUserbyActivity/{Id}
 	@GetMapping("/GetUserbyActivity/{Id}")
 	@ResponseBody
@@ -195,6 +195,18 @@ public class UserRestController {
 		return userRepository.GetUserbyActivityId(Id);
 		
 	}
+	
+	
+	// http://localhost:8083/SpringMVC/servlet/GetUserbyChatsender/{Id}
+		@GetMapping("/GetUserbyChatsender/{Id}")
+		@ResponseBody
+		
+		public String GetUserbyChatsender(@PathVariable("Id") long Id){
+			return userRepository.GetUserbyChat_sender(Id);
+			
+		}
+		
+		
 	
 	
 	

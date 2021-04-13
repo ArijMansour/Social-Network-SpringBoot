@@ -53,4 +53,11 @@ public interface UserRepository extends CrudRepository<User, Long> {
     public String  GetUserbyActivityId(@Param("Id")long Id); 
 	
 	
+	@Query("Select "
+			+ "DISTINCT A.sender FROM tn.esprit.entities.Chat A "
+			+ "join A.user U "
+			+ "where U.Id=:Id")
+    public String  GetUserbyChat_sender(@Param("Id")long Id); 
+	
+	
 }
