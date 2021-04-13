@@ -157,6 +157,67 @@ public class Meeting implements Serializable {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Meeting_Date == null) ? 0 : Meeting_Date.hashCode());
+		result = prime * result + ((Meeting_Details == null) ? 0 : Meeting_Details.hashCode());
+		result = prime * result + Meeting_Duration;
+		result = prime * result + ((Meeting_Id == null) ? 0 : Meeting_Id.hashCode());
+		result = prime * result + ((Meeting_Location == null) ? 0 : Meeting_Location.hashCode());
+		result = prime * result + Meeting_Status;
+		result = prime * result + ((Meeting_Topic == null) ? 0 : Meeting_Topic.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Meeting other = (Meeting) obj;
+		if (Meeting_Date == null) {
+			if (other.Meeting_Date != null)
+				return false;
+		} else if (!Meeting_Date.equals(other.Meeting_Date))
+			return false;
+		if (Meeting_Details == null) {
+			if (other.Meeting_Details != null)
+				return false;
+		} else if (!Meeting_Details.equals(other.Meeting_Details))
+			return false;
+		if (Meeting_Duration != other.Meeting_Duration)
+			return false;
+		if (Meeting_Id == null) {
+			if (other.Meeting_Id != null)
+				return false;
+		} else if (!Meeting_Id.equals(other.Meeting_Id))
+			return false;
+		if (Meeting_Location == null) {
+			if (other.Meeting_Location != null)
+				return false;
+		} else if (!Meeting_Location.equals(other.Meeting_Location))
+			return false;
+		if (Meeting_Status != other.Meeting_Status)
+			return false;
+		if (Meeting_Topic == null) {
+			if (other.Meeting_Topic != null)
+				return false;
+		} else if (!Meeting_Topic.equals(other.Meeting_Topic))
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return "Meeting [Meeting_Id=" + Meeting_Id + ", Meeting_Topic=" + Meeting_Topic + ", Meeting_Duration="
 				+ Meeting_Duration + ", Meeting_Location=" + Meeting_Location + ", Meeting_Details=" + Meeting_Details

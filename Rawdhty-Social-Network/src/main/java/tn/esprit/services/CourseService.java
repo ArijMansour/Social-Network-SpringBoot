@@ -23,6 +23,8 @@ public interface CourseService {
 
 	List<Course> retrieveCoursesByType(Course_Type s);
 
+	List<Course> retrieveCoursesByName(String s);
+
 	// ============================//
 
 }
