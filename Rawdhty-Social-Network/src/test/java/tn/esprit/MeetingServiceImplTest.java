@@ -38,7 +38,7 @@ public class MeetingServiceImplTest {
 	public void testAddMeeting() throws java.text.ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = dateFormat.parse("2021-04-12");
-		Meeting m = new Meeting("testTopic3", 2, "testLocation3", "testDetails3", date, 0);
+		Meeting m = new Meeting("testTopic5", 3, "testLocation5", "testDetails5", date, 1);
 		ms.addMeeting(m);
 
 	}

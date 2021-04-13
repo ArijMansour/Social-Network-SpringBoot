@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.entities.Claim;
+import tn.esprit.entities.Course;
 import tn.esprit.entities.Meeting;
 import tn.esprit.entities.Role;
 import tn.esprit.entities.User;
@@ -122,6 +123,13 @@ public class UserRestController {
 		return userService.addMeetingToUser(Integer.valueOf(mId), Integer.valueOf(uId));
 	}
 
+	// http://localhost:8083/SpringMVC/servlet/Add-Course-To-Educator/{course-id}/{user-id}
+	@PutMapping("/Add-Course-To-Educator/{course-id}/{user-id}")
+	@ResponseBody
+	public String addCourseToUser(@PathVariable("user-id") String uId, @PathVariable("course-id") String crId) {
+		return userService.addCourseToEducator(Integer.valueOf(crId), Integer.valueOf(uId));
+	}
+
 	// http://localhost:8083/SpringMVC/servlet/Claims-User/{User-id}
 	@GetMapping("/Claims-User/{User-id}")
 	@ResponseBody
@@ -136,6 +144,39 @@ public class UserRestController {
 	public List<Meeting> getAllMeetingsByUser(@PathVariable("User-id") String userId) {
 
 		return userService.getAllMeetingsByUser(Integer.valueOf(userId));
+	}
+
+	// http://localhost:8083/SpringMVC/servlet/Courses-User/{User-id}
+	@GetMapping("/Courses-User/{User-id}")
+	@ResponseBody
+	public List<Course> getAllCoursesByUser(@PathVariable("User-id") String userId) {
+
+		return userService.getAllCoursesByEducator(Integer.valueOf(userId));
+	}
+
+	// http://localhost:8083/SpringMVC/servlet/Block-User/{User-id}
+	@PutMapping("/Block-User/{User-id}")
+	@ResponseBody
+	public String blockUser(@PathVariable("User-id") int userId) {
+
+		return userService.blockUser(userId);
+	}
+
+	// http://localhost:8083/SpringMVC/servlet/Activate-Account/{User-id}
+	@PutMapping("/Activate-Account/{User-id}")
+	@ResponseBody
+	public String activeAccount(@PathVariable("User-id") int userId) {
+
+		return userService.activateAccount(userId);
+	}
+
+	// http://localhost:8083/SpringMVC/servlet/Authenticate/{User-email}/{User-password}
+	@GetMapping("/Authenticate/{User-email}/{User-password}")
+	@ResponseBody
+	public String Authenticate(@PathVariable("User-email") String userEmail,
+			@PathVariable("User-password") String userPassword) {
+
+		return userService.getUserByEmailandPassword(userEmail, userPassword);
 	}
 
 	// ============================//

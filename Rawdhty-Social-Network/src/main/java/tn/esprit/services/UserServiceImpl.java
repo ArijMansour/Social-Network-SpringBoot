@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.entities.Claim;
+import tn.esprit.entities.Course;
 import tn.esprit.entities.Meeting;
 import tn.esprit.entities.Role;
 import tn.esprit.entities.User;
 import tn.esprit.repositories.ClaimRepository;
+import tn.esprit.repositories.CourseRepository;
 import tn.esprit.repositories.MeetingRepository;
 import tn.esprit.repositories.UserRepository;
 
@@ -29,6 +31,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	MeetingRepository meetingRepository;
+
+	@Autowired
+	CourseRepository courseRepository;
 
 	private static final Logger L = LogManager.getLogger(UserServiceImpl.class);
 
@@ -128,6 +133,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public String addCourseToEducator(int cId, int uId) {
+		Course cr = courseRepository.findById(Long.valueOf(cId)).get();
+		User u = userRepository.findById(Long.valueOf(uId)).get();
+		if (u.getRole().name().equals("EDUCATOR")) {
+			cr.setUser(u);
+			courseRepository.save(cr);
+			return "Course Add successfully to Educator";
+		} else
+			return "This user isn't an Educator!";
+	}
+
+	@Override
 	public List<Claim> getAllClaimsByUser(int userId) {
 		List<Claim> claims = (List<Claim>) claimRepository.findAll();
 
@@ -155,6 +172,52 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 		return sMeetings;
+	}
+
+	@Override
+	public List<Course> getAllCoursesByEducator(int uId) {
+		List<Course> courses = (List<Course>) courseRepository.findAll();
+		List<Course> sCourses = new ArrayList<Course>();
+		for (Course cr : courses) {
+			if (cr.getUser().getId() == uId) {
+				sCourses.add(cr);
+			}
+		}
+		return sCourses;
+	}
+
+
+	@Override
+	public String getUserByEmailandPassword(String l, String p) {
+		User u = userRepository.getUserByEmailAndPass(l, p);
+		if (u != null && u.getStatus() != 0) {
+			return "Logged in successfully " + u;
+		} else
+			return "Wrong Email or Password! Try again";
+
+	}
+
+	@Override
+	public String blockUser(int uId) {
+		User u = userRepository.findById(Long.valueOf(uId)).get();
+		if (u.getStatus() == 1) {
+			u.setStatus(0);
+			userRepository.save(u);
+			return "User Blocked";
+		} else
+			return "This user is already blocked!";
+
+	}
+
+	@Override
+	public String activateAccount(int uId) {
+		User u = userRepository.findById(Long.valueOf(uId)).get();
+		if (u.getStatus() == 0) {
+			u.setStatus(1);
+			userRepository.save(u);
+			return "Account Activated " + u;
+		} else
+			return "This account is already activated!";
 	}
 
 	// ============================//
