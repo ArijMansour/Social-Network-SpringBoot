@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.entities.Role;
 import tn.esprit.entities.Claim;
 import tn.esprit.entities.Course;
 import tn.esprit.entities.Meeting;
-import tn.esprit.entities.Role;
 import tn.esprit.entities.User;
+import tn.esprit.repositories.UserRepository;
 import tn.esprit.services.UserService;
 
 @RestController
@@ -26,7 +27,8 @@ public class UserRestController {
 
 	@Autowired
 	UserService userService;
-
+	@Autowired
+	UserRepository userRepository;
 	// Retrieve All Users List
 	// http://localhost:8083/SpringMVC/servlet/retrieve-all-users
 	@GetMapping("/retrieve-all-users")
@@ -101,13 +103,7 @@ public class UserRestController {
 		return userService.retrieveUsersByStatus(i);
 	}
 
-	// Retrieve All Users List By Role
-	// http://localhost:8083/SpringMVC/servlet/retrieve-users-byRole/{user-role}
-	@GetMapping("/retrieve-users-byRole/{user-role}")
-	@ResponseBody
-	public List<User> getUsersByRole(@PathVariable("user-role") String s) {
-		return userService.retrieveUsersByRole(s);
-	}
+
 
 	// http://localhost:8083/SpringMVC/servlet/Add-Claim-To-User/{claim-id}/{user-id}
 	@PutMapping("/Add-Claim-To-User/{claim-id}/{user-id}")
@@ -146,6 +142,7 @@ public class UserRestController {
 		return userService.getAllMeetingsByUser(Integer.valueOf(userId));
 	}
 
+
 	// http://localhost:8083/SpringMVC/servlet/Courses-User/{User-id}
 	@GetMapping("/Courses-User/{User-id}")
 	@ResponseBody
@@ -180,4 +177,26 @@ public class UserRestController {
 	}
 
 	// ============================//
+=======
+	// Retrieve All Users List By Role
+	// http://localhost:8083/SpringMVC/servlet/retrieve-users-byRole/{user-role}
+	@GetMapping("/retrieve-users-byRole/{user-role}")
+	@ResponseBody
+	public List<User> getUsersByRole(@PathVariable("user-role") String s) {
+		return userService.retrieveUsersByRole(s);
+	}
+	
+	
+	
+	// http://localhost:8083/SpringMVC/servlet/GetUserbyActivity/{Id}
+	@GetMapping("/GetUserbyActivity/{Id}")
+	@ResponseBody
+	public String getUsersByActivity(@PathVariable("Id") long Id){
+		return userRepository.GetUserbyActivityId(Id);
+		
+	}
+	
+	
+	
+
 }

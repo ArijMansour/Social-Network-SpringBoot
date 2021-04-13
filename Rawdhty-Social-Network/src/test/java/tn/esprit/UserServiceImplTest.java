@@ -47,8 +47,15 @@ public class UserServiceImplTest {
 		User u7 = new User("email7", "password7", "firstname7", "lastname7", "adress7", "telephone7", "cin7", "date",
 				Role.EDUCATOR);
 		us.addUser(u7);
+=======
+	//@Test
+	//public void testAddUser() throws java.text.ParseException {
+	//	User u = new User("email3", "password3", "firstname3", "lastname3", "adress3", "telephone3", "cin3", "date",
+		//		Role.PARENT);
+	//	us.addUser(u);
 
-	}
+
+//	}
 
 	@Test
 	public void testdeleteUser() {

@@ -40,6 +40,7 @@ public interface UserService {
 
 	List<Meeting> getAllMeetingsByUser(int uId);
 
+
 	String addCourseToEducator(int cId, int uId);
 
 	List<Course> getAllCoursesByEducator(int uId);
@@ -49,7 +50,9 @@ public interface UserService {
 	String blockUser(int uId);
 	
 	String activateAccount(int uId);
+	
 
-	// ============================//
+
+
 
 }
