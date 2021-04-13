@@ -2,7 +2,6 @@ package tn.esprit.services;
 
 import java.util.List;
 
-import javax.management.relation.Role;
 
 import tn.esprit.entities.Activity ;
 public interface ActivityService {

@@ -2,16 +2,11 @@ package tn.esprit.entities;
 
 import java.io.Serializable;
 import java.util.* ;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -43,6 +38,7 @@ public class Activity implements  Serializable{
 	@ManyToOne
 	@JoinColumn(name= "iduser")
 	private User user;
+
 
 public Long getActivity_Id() {
 	return Activity_Id;
@@ -139,13 +135,9 @@ public static long getSerialversionuid() {
 }
 
 
-@Override
-public String toString() {
-	return "Activity [Activity_Id=" + Activity_Id + ", Activity_Name=" + Activity_Name + ", Activity_Type="
-			+ Activity_Type + ", Activity_Description=" + Activity_Description + ", Activity_Image=" + Activity_Image
-			+ ", Activity_Status=" + Activity_Status + ", date_debut=" + date_debut + ", date_fin=" + date_fin
-			+ ", user=" + user + "]";
-}
+
+
+
 
 
 public Activity(Long activity_Id, String activity_Name, String activity_Type, String activity_Description,
@@ -163,11 +155,22 @@ public Activity(Long activity_Id, String activity_Name, String activity_Type, St
 }
 
 
+@Override
+public String toString() {
+	return "Activity [Activity_Id=" + Activity_Id + ", Activity_Name=" + Activity_Name + ", Activity_Type="
+			+ Activity_Type + ", Activity_Description=" + Activity_Description + ", Activity_Image=" + Activity_Image
+			+ ", Activity_Status=" + Activity_Status + ", date_debut=" + date_debut + ", date_fin=" + date_fin
+			+ ", user=" + user + "]";
+}
+
+
 public Activity() {
 	super();
 	// TODO Auto-generated constructor stub
 }
- 
+
+
+
 
 
 
