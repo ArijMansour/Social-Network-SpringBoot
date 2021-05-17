@@ -48,18 +48,20 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public String retrieveNbrCourses() {
 		Long nbCourses = Long.valueOf(courseRepository.getCoursesNumber());
-		if (nbCourses > 1) {
+		if ( nbCourses > 1) {
 			return "The number of courses is: " + nbCourses + " Courses";
-		} else
+		}
+		else
 			return "The number of courses is: " + nbCourses + " Course";
 	}
 
 	@Override
 	public String retrieveNbrCoursesByType(Course_Type s) {
 		Long nbCourses = Long.valueOf(courseRepository.getCoursesNumberByType(s));
-		if (nbCourses > 1) {
+		if ( nbCourses > 1) {
 			return "The number of desired courses is: " + nbCourses + " " + s + " Courses";
-		} else
+		}
+		else
 			return "The number of desired courses is: " + nbCourses + " " + s + " Course";
 	}
 
@@ -67,12 +69,6 @@ public class CourseServiceImpl implements CourseService {
 	public List<Course> retrieveCoursesByType(Course_Type s) {
 
 		return courseRepository.getCoursesByType(s);
-	}
-
-	@Override
-	public List<Course> retrieveCoursesByName(String s) {
-
-		return courseRepository.getCoursesByName(s);
 	}
 
 	// ============================//

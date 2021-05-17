@@ -26,14 +26,53 @@ public class Notification implements Serializable {
 	private Long Notification_Id ; 
 	private String Notification_Text ; 
 	private String Notification_Type ;
+	private String Notification_Name ;
 	private int sender;
 	private int receiver;
 	private LocalDateTime date;
+	private String imageUrl ;
 	//@ManyToMany(mappedBy="l_Notification", cascade = CascadeType.ALL)
 	//private Set <Parent> l_Parent_Notif ;// 
+	private String person ; 
+	private String fileName ;
 	
 	
 
+	
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getPerson() {
+		return person;
+	}
+
+	public void setPerson(String person) {
+		this.person = person;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public String getNotification_Name() {
+		return Notification_Name;
+	}
+	public void setNotification_Name(String notification_Name) {
+		Notification_Name = notification_Name;
+	}
+	public Notification(String imageUrl) {
+		super();
+		this.imageUrl = imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 	public int getSender() {
 		return sender;
 	}

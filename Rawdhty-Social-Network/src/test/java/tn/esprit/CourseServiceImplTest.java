@@ -34,7 +34,7 @@ public class CourseServiceImplTest {
 
 	@Test
 	public void testAddCourse() throws java.text.ParseException {
-		Course cr = new Course("testCourseName5", "testCourseDetails5", Course_Type.Math);
+		Course cr = new Course("testCourseName3", "testCourseDetails3", Course_Type.Art);
 		cs.addCourse(cr);
 
 	}

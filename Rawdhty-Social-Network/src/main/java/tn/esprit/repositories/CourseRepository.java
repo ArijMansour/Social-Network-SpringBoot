@@ -22,9 +22,6 @@ public interface CourseRepository extends CrudRepository<Course, Long> {
 	@Query("SELECT c FROM Course c WHERE c.crType = :crType")
 	List<Course> getCoursesByType(@Param("crType") Course_Type s);
 
-	@Query("SELECT c FROM Course c WHERE c.Courses_name = :Courses_name")
-	List<Course> getCoursesByName(@Param("Courses_name") String s);
-
 	// ============================//
 
 }

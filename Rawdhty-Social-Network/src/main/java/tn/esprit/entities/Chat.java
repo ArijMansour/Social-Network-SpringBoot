@@ -206,11 +206,13 @@ public class Chat implements Serializable {
 		return true;
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return "Chat [Chat_Id=" + Chat_Id + ", Chat_Text=" + Chat_Text + ", Chat_Date=" + Chat_Date + ", type=" + type
-				+ ", sender=" + sender + ", content=" + content + ", respense=" + respense + ", chatKeyWord="
-				  + ", user=" + user + "]";
+				+ ", sender=" + sender + ", content=" + content + ", Chat_nbrequest=" + Chat_nbrequest + ", respense="
+				+ respense + "]";
 	}
 
 	public Chat(long chat_Id, String chat_Text, Date chat_Date, MessageType type, String sender, String content,

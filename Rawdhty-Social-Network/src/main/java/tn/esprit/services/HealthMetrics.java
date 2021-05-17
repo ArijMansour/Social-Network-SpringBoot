@@ -12,8 +12,8 @@ public class HealthMetrics implements HealthIndicator {
 
 	@Override
 	public Health health() {
-		return checkInternet() == true ? Health.up().withDetail("success code", "Active Internet Connection").build()
-				: Health.down().withDetail("error code", "InActive Internet Connection").build();
+		return checkInternet() == true ? Health.up().withDetail("success code", "Rawdhaty-social-Network is Active on an Internet Connection").build()
+				: Health.down().withDetail("error code", "Rawdhaty-social-Network is InActive on an Internet Connection").build();
 
 	}
 

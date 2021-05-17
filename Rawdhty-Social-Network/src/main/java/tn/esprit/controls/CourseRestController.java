@@ -82,13 +82,6 @@ public class CourseRestController {
 		return courseService.retrieveCoursesByType(s);
 	}
 
-	// http://localhost:8083/SpringMVC/servlet/courses-name/{course-name}
-	@GetMapping("/courses-name/{course-name}")
-	@ResponseBody
-	public List<Course> getCoursesByName(@PathVariable("course-name") String s) {
-		return courseService.retrieveCoursesByName(s);
-	}
-
 	// ============================//
 
 }
