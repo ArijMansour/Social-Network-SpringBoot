@@ -7,33 +7,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//import tn.esprit.entities.User
-//import tn.esprit.services.UserService;
+import tn.esprit.entities.User ;
+import tn.esprit.services.UserService;
 
 
-// @RestController//
-//@RequestMapping("/User/Stats")//
-//public class UserStatistiqueRestController {
-//	@Autowired
-	//UserService userservice;
+ @RestController
+@RequestMapping("/User/Stats")//
+public class UserStatistiqueRestController {
+	@Autowired
+	UserService userservice;
 	
-	//Role_Type roletype ; 
 	
-	//@GetMapping("/Count")
-	//public int CountUser() {
-//		return userservice.retrieveAllUsers().size();
-	//}
-	//@GetMapping("/ValidUser")
-	//public int ValidUser() {
-	//	List<User> users = userservice.retrieveAllUsers();
-	//	int valide = 0;
-	//	for (User user : users) {
-		//	if (user.isValid()) {
-		//		valide++;
-		//	}
-	//	}
-	//	return valide;
-	//}
+	@GetMapping("/ValidUser")
+	public int ValidUser() {
+		List<User> users = userservice.retrieveAllUsers();
+		int valide = 0;
+		for (User user : users) {
+			if (user.isValid()) {
+			valide++;
+		}
+	}
+	return valide;
+	} 
+	
+	
 	
 	/*@GetMapping("/KindergardenOwner")
 	//public int KindergardenUser() {
@@ -92,4 +89,4 @@ import org.springframework.web.bind.annotation.RestController;
 	//
 //}//
 
-
+ }

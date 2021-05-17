@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.entities.Role;
 import tn.esprit.entities.Claim;
-import tn.esprit.entities.Course;
 import tn.esprit.entities.Meeting;
 import tn.esprit.entities.User;
 import tn.esprit.repositories.UserRepository;
@@ -34,8 +33,8 @@ public class UserRestController {
 	@GetMapping("/retrieve-all-users")
 	@ResponseBody
 	public List<User> getUsers() {
-		List<User> list = userService.retrieveAllUsers();
-		return list;
+		List<User> users= userService.retrieveAllUsers();
+		return users;
 	}
 
 	// http://localhost:8083/SpringMVC/servlet/retrieve-user/{user-id}
@@ -119,13 +118,6 @@ public class UserRestController {
 		return userService.addMeetingToUser(Integer.valueOf(mId), Integer.valueOf(uId));
 	}
 
-	// http://localhost:8083/SpringMVC/servlet/Add-Course-To-Educator/{course-id}/{user-id}
-	@PutMapping("/Add-Course-To-Educator/{course-id}/{user-id}")
-	@ResponseBody
-	public String addCourseToUser(@PathVariable("user-id") String uId, @PathVariable("course-id") String crId) {
-		return userService.addCourseToEducator(Integer.valueOf(crId), Integer.valueOf(uId));
-	}
-
 	// http://localhost:8083/SpringMVC/servlet/Claims-User/{User-id}
 	@GetMapping("/Claims-User/{User-id}")
 	@ResponseBody
@@ -142,42 +134,6 @@ public class UserRestController {
 		return userService.getAllMeetingsByUser(Integer.valueOf(userId));
 	}
 
-
-	// http://localhost:8083/SpringMVC/servlet/Courses-User/{User-id}
-	@GetMapping("/Courses-User/{User-id}")
-	@ResponseBody
-	public List<Course> getAllCoursesByUser(@PathVariable("User-id") String userId) {
-
-		return userService.getAllCoursesByEducator(Integer.valueOf(userId));
-	}
-
-	// http://localhost:8083/SpringMVC/servlet/Block-User/{User-id}
-	@PutMapping("/Block-User/{User-id}")
-	@ResponseBody
-	public String blockUser(@PathVariable("User-id") int userId) {
-
-		return userService.blockUser(userId);
-	}
-
-	// http://localhost:8083/SpringMVC/servlet/Activate-Account/{User-id}
-	@PutMapping("/Activate-Account/{User-id}")
-	@ResponseBody
-	public String activeAccount(@PathVariable("User-id") int userId) {
-
-		return userService.activateAccount(userId);
-	}
-
-	// http://localhost:8083/SpringMVC/servlet/Authenticate/{User-email}/{User-password}
-	@GetMapping("/Authenticate/{User-email}/{User-password}")
-	@ResponseBody
-	public String Authenticate(@PathVariable("User-email") String userEmail,
-			@PathVariable("User-password") String userPassword) {
-
-		return userService.getUserByEmailandPassword(userEmail, userPassword);
-	}
-
-	// ============================//
-=======
 	// Retrieve All Users List By Role
 	// http://localhost:8083/SpringMVC/servlet/retrieve-users-byRole/{user-role}
 	@GetMapping("/retrieve-users-byRole/{user-role}")
@@ -207,8 +163,23 @@ public class UserRestController {
 		}
 		
 		
+		// http://localhost:8083/SpringMVC/servlet//Add-Activity-To-User/{activity-id}/{iduser}
+		@PutMapping("/Add-Activity-To-User/{activity-id}/{iduser}")
+		@ResponseBody
+		public String addActivityToUser(@PathVariable("iduser") String uId, @PathVariable("activity-id") String mId) {
+			return userService.addActivityToUser(Integer.valueOf(mId), Integer.valueOf(uId));
+		}
+		
+		
 	
-	
+		// http://localhost:8083/SpringMVC/servlet/Add-Chat-To-User/{chat-id}/{iduser}
+				@PutMapping("/Add-Chat-To-User/{chat-id}/{iduser}")
+				@ResponseBody
+				public String addChatToUser(@PathVariable("iduser") String uId, @PathVariable("chat-id") String mId) {
+					return userService.addChatToUser(Integer.valueOf(mId), Integer.valueOf(uId));
+				}
+				
+				
 	
 
 }

@@ -32,28 +32,11 @@ public class UserServiceImplTest {
 		us.retrieveAllUsers();
 	}
 
-	@Test
-	public void testAddUser() throws java.text.ParseException {
-		User u1 = new User("email5", "password5", "firstname5", "lastname5", "adress5", "telephone5", "cin5", "date",
-				Role.DOCTOR);
-		User u2 = new User("email5", "password5", "firstname5", "lastname5", "adress5", "telephone5", "cin5", "date",
-				Role.DOCTOR);
-		User u3 = new User("email5", "password5", "firstname5", "lastname5", "adress5", "telephone5", "cin5", "date",
-				Role.DOCTOR);
-		User u4 = new User("email5", "password5", "firstname5", "lastname5", "adress5", "telephone5", "cin5", "date",
-				Role.DOCTOR);
-		User u5 = new User("email5", "password5", "firstname5", "lastname5", "adress5", "telephone5", "cin5", "date",
-				Role.EDUCATOR);
-		User u7 = new User("email7", "password7", "firstname7", "lastname7", "adress7", "telephone7", "cin7", "date",
-				Role.EDUCATOR);
-		us.addUser(u7);
-=======
 	//@Test
 	//public void testAddUser() throws java.text.ParseException {
 	//	User u = new User("email3", "password3", "firstname3", "lastname3", "adress3", "telephone3", "cin3", "date",
 		//		Role.PARENT);
 	//	us.addUser(u);
-
 
 //	}
 

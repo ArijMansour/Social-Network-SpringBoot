@@ -1,23 +1,28 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+
 import java.util.* ;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import com.fasterxml.jackson.annotation.JsonIgnore; 
+
 @Entity 
 @Table(name="T_Activities")
 public class Activity implements  Serializable{
 
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	@Column(name="Activity_ID")
 	private Long Activity_Id ; 
 	private String Activity_Name ; 
@@ -34,15 +39,26 @@ public class Activity implements  Serializable{
  private Date date_fin ;
  
  
-   @JsonIgnore
-	@ManyToOne
+ @JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name= "iduser")
 	private User user;
+ 
+ 
+ 
+
+
+
+
+
 
 
 public Long getActivity_Id() {
 	return Activity_Id;
 }
+
+
+
 
 
 public void setActivity_Id(Long activity_Id) {
@@ -119,22 +135,17 @@ public void setDate_fin(Date date_fin) {
 	this.date_fin = date_fin;
 }
 
-
 public User getUser() {
 	return user;
 }
-
 
 public void setUser(User user) {
 	this.user = user;
 }
 
-
 public static long getSerialversionuid() {
 	return serialVersionUID;
 }
-
-
 
 
 
@@ -155,12 +166,55 @@ public Activity(Long activity_Id, String activity_Name, String activity_Type, St
 }
 
 
+
+
+
+
+
+
+
+
+
+public Activity(String activity_Name, String activity_Type, String activity_Description, String activity_Image,
+		int activity_Status, Date date_debut, Date date_fin, User user) {
+	super();
+	Activity_Name = activity_Name;
+	Activity_Type = activity_Type;
+	Activity_Description = activity_Description;
+	Activity_Image = activity_Image;
+	Activity_Status = activity_Status;
+	this.date_debut = date_debut;
+	this.date_fin = date_fin;
+	this.user = user;
+}
+
+
+
+
+
+
+
+
+
+
+public Activity(String activity_Name, String activity_Type, String activity_Description, String activity_Image,
+		int activity_Status, Date date_debut, Date date_fin) {
+	super();
+	Activity_Name = activity_Name;
+	Activity_Type = activity_Type;
+	Activity_Description = activity_Description;
+	Activity_Image = activity_Image;
+	Activity_Status = activity_Status;
+	this.date_debut = date_debut;
+	this.date_fin = date_fin; 
+}
+
+
 @Override
 public String toString() {
 	return "Activity [Activity_Id=" + Activity_Id + ", Activity_Name=" + Activity_Name + ", Activity_Type="
 			+ Activity_Type + ", Activity_Description=" + Activity_Description + ", Activity_Image=" + Activity_Image
-			+ ", Activity_Status=" + Activity_Status + ", date_debut=" + date_debut + ", date_fin=" + date_fin
-			+ ", user=" + user + "]";
+			+ ", Activity_Status=" + Activity_Status + ", date_debut=" + date_debut + ", date_fin=" + date_fin + "]";
 }
 
 

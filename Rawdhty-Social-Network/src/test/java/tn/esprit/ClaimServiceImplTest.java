@@ -39,7 +39,7 @@ public class ClaimServiceImplTest {
 	public void testAddClaim() throws java.text.ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = dateFormat.parse("31-03-2021");
-		Claim cl = new Claim("testClaimDesc5", date, "testClaimImg5", Claims_Type.Kindergarten);
+		Claim cl = new Claim("testClaimDesc3", date, "testClaimImg3", Claims_Type.Application);
 		cls.addClaim(cl);
 
 	}
